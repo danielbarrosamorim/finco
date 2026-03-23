@@ -5,6 +5,15 @@ compatibility_date = "2025-03-20"
 [vars]
 SUPABASE_URL = "https://fvplmaqoajyaajffvljj.supabase.co"
 
+[[queues.producers]]
+queue = "finco-uploads"
+binding = "UPLOAD_QUEUE"
+
+[[queues.consumers]]
+queue = "finco-uploads"
+max_batch_size = 10
+max_batch_timeout = 5
+
 # Secrets (set via `wrangler secret put`):
 # SUPABASE_SERVICE_KEY
 # ANTHROPIC_API_KEY

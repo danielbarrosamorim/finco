@@ -6,6 +6,9 @@ import categories from './routes/categories'
 import rules from './routes/rules'
 import expenses from './routes/expenses'
 import ai from './routes/ai'
+import upload from './routes/upload'
+import { processQueue } from './queues/processor'
+import type { UploadMessage } from './queues/processor'
 
 const app = new Hono<{ Bindings: Bindings }>()
 
@@ -35,5 +38,10 @@ app.route('/categories', categories)
 app.route('/rules', rules)
 app.route('/expenses', expenses)
 app.route('/ai', ai)
+app.route('/upload', upload)
 
-export default app
+export default {
+  fetch: app.fetch,
+  queue: (batch: MessageBatch<UploadMessage>, env: Bindings) =>
+    processQueue(batch, env),
+}
