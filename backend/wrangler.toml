@@ -1,0 +1,11 @@
+name = "finco-api"
+main = "src/index.ts"
+compatibility_date = "2025-03-20"
+
+[vars]
+SUPABASE_URL = "https://fvplmaqoajyaajffvljj.supabase.co"
+
+# Secrets (set via `wrangler secret put`):
+# SUPABASE_SERVICE_KEY
+# ANTHROPIC_API_KEY
+# API_KEY
